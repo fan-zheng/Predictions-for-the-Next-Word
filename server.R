@@ -1,7 +1,6 @@
 require(shiny)
 require(stringr)
-load("data_ngrams.Rdata")
-load("data_ngrams_backoff.Rdata")
+load("combined_ngrams.RData")
 source("getnextwords.R",local = TRUE)
 shinyServer(function(input, output) {
          output$predict <- renderText({

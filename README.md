@@ -20,6 +20,7 @@ Function_Katzbackoff.R: Generate next word with Katzbackoff algorithm and how to
 getnextwords.R: Implement Katz backoff and Kneser_Ney algorithm for the app
 data_ngrams.Rdata: Kneser_Ney look-up dataset
 data_ngrams_backoff.Rdata: Katz backoff dataset
+combined_ngrams.RData: Combine datasets from Kneser_Ney and Katz backoff and upload to r-Shinyapps.
 ui.R
 server.R
 

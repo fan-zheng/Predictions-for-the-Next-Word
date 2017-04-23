@@ -15,7 +15,7 @@ getnextword <- function(strs,n){
 
 trigrams <- function(x,y,n=5){
   # get words from trigram
-  outputwords1 <- tri_final[tri_final$w1==x & tri_final$w2==y,]
+  outputwords1 <- trigram[trigram$w1==x & trigram$w2==y,]
   if ((dim(outputwords1)[1]==0) | (is.na(x)==TRUE)) # if no words in trigram go to bigram
     return (bigrams(y,n))
   outputwords2<-outputwords1[order(-outputwords1$prob_tri),]
@@ -27,7 +27,7 @@ trigrams <- function(x,y,n=5){
 }
 
 bigrams <- function(y,n=5){
-  outputwords1 <- bi_final[bi_final$w1==y,]
+  outputwords1 <- bigram[bigram$w1==y,]
   if(dim(outputwords1)[1]==0)
     return (unigrams(n))
   outputwords2<-outputwords1[order(-outputwords1$prob_bi),]
@@ -40,7 +40,7 @@ bigrams <- function(y,n=5){
 }
 
 unigrams <- function(n){
-  return (sample(uni_final$w1,size = n))
+  return (sample(unigram$w1,size = n))
 }
 
 fun<-function(strs,d,n) {
@@ -48,16 +48,16 @@ fun<-function(strs,d,n) {
   words<-last2words(strs)
   x<-words[1]
   y<-words[2]
-  obs_trigs<-tris[tris$w1==x & tris$w2==y,]
+  obs_trigs<-trigram[trigram$w1==x & trigram$w2==y,]
   # in trigrams tri1 select rows that have word1 and word2 in w1, w2 and new df is obs_trigs
   obs_trigs$prob<-(obs_trigs$freq-d)/sum(obs_trigs$freq)
   # calculate probability for those that have word1 and word2 in obs_trigs
-  #unobs_trig_tails<-unis[!(unis$w1%in%obs_trigs$w3),]
+  #unobs_trig_tails<-unigram[!(unigram$w1%in%obs_trigs$w3),]
   # in unigrams keep only those words that are not in obs_trigs$w3, they are the ones not start with word1 
   # and word2 in unigrams no need here for later can get rid all of them from obs_bi
   # unobs_trig_tailsv<-uni1[!(uni1$w1%in%obs_trigs$w3),]$w1 
   # vector form
-  obs_bigs<-bis[bis$w1==y,]
+  obs_bigs<-bigram[bigram$w1==y,]
   # select all those start with word2 in bigrams
   obs_bigs$prob<-(obs_bigs$freq-d)/sum(obs_bigs$freq)
   # calculate probability of obs_bigrs
@@ -65,7 +65,7 @@ fun<-function(strs,d,n) {
   # calculate alpha_big, that is the probability spill into unigrams
   
   
-  unobs_trig_tails<-unis[!(unis$w1%in%obs_bigs$w2),]
+  unobs_trig_tails<-unigram[!(unigram$w1%in%obs_bigs$w2),]
   #update in unigrams that also removes the ones that in obs_bigs whose w1 is word1,including
   #the one shows up in trigram w1 is words, w2 is word2
   unobs_trig_tails$prob<-unobs_trig_tails$freq/sum(unobs_trig_tails$freq)*alpha_big
@@ -82,6 +82,7 @@ fun<-function(strs,d,n) {
   # before combine needs to only select the second word to be consistent with unigrams format 
   names(obs_bigs_bionly)[names(obs_bigs_bionly)=='w2']<-'w1'
   # before combine needs to change w2 name to w1 to be consistent with unigrams format
+  unobs_trig_tails<-subset(unobs_trig_tails,select=c(freq,w1,prob))
   unobs_trigrams<-rbind(unobs_trig_tails,obs_bigs_bionly)
   # this unobs_trigrams combines all unigrams that not observed in trigrams in unigram format
   unobs_trigrams$prob<-unobs_trigrams$prob/sum(unobs_trigrams$prob)*alpha_trig
