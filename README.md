@@ -13,16 +13,17 @@ This is part of the Capstone course of Coursera Data Science specialization by J
 
 ## Content
 
-Train_test_dataset_preparation.html: Steps to process raw text data downloaded and generate trigrams, bigrams and unigrams data frame for further processing.
-Dataset_Katzbackoff.R: Data preparation for Katzbackoff algorithm.
-Dataset_Kneser_Ney.R: Data preparation for Kneser_Ney algorithm.
-Function_Katzbackoff.R: Generate next word with Katzbackoff algorithm and how to test to find optimized discount number.
-getnextwords.R: Implement Katz backoff and Kneser_Ney algorithm for the app
-data_ngrams.Rdata: Kneser_Ney look-up dataset
-data_ngrams_backoff.Rdata: Katz backoff dataset
-combined_ngrams.RData: Combine datasets from Kneser_Ney and Katz backoff and upload to r-Shinyapps.
-ui.R
-server.R
+Train_test_dataset_preparation.html: Steps to process raw text data downloaded and generate trigrams, bigrams and unigrams data frame for further processing.  
+Dataset_Katzbackoff.R: Data preparation for Katzbackoff algorithm.  
+Dataset_Kneser_Ney.R: Data preparation for Kneser_Ney algorithm.  
+Function_Katzbackoff.R: Generate next word with Katzbackoff algorithm and how to test to find optimized discount number.  
+getnextwords.R: Implement Katz backoff and Kneser_Ney algorithm for the app.  
+data_ngrams.Rdata: Kneser_Ney look-up dataset.  
+data_ngrams_backoff.Rdata: Katz backoff dataset.  
+combined_ngrams.RData: Combine datasets from Kneser_Ney and Katz backoff and upload to r-Shinyapps.  
+ui.R  
+server.R  
+
 
 ## Apps link:
 
