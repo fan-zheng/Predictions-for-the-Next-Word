@@ -13,7 +13,7 @@ This is part of the Capstone course of Coursera Data Science specialization by J
 
 ## Content
 
-Train_test_dataset_preparation.md: Steps to process raw text data downloaded and generate trigrams, bigrams and unigrams data frame for further processing.
+Train_test_dataset_preparation.html: Steps to process raw text data downloaded and generate trigrams, bigrams and unigrams data frame for further processing.
 Dataset_Katzbackoff.R: Data preparation for Katzbackoff algorithm.
 Dataset_Kneser_Ney.R: Data preparation for Kneser_Ney algorithm.
 Function_Katzbackoff.R: Generate next word with Katzbackoff algorithm and how to test to find optimized discount number.
@@ -26,6 +26,10 @@ server.R
 ## Apps link:
 
 https://fan-zheng.shinyapps.io/predictions_for_the_next_word/
+
+## Train_test_dataset_preparation.html link
+
+http://htmlpreview.github.io/?https://github.com/fan-zheng/Predictions-for-the-Next-Word/blob/master/Train_test_dataset_preparation.html
 
 
 
