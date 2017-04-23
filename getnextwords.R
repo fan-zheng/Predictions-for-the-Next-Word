@@ -1,6 +1,6 @@
 last2words <- function(str){
   
-  return (c(word(str,-2),word(str,-1)))
+  return (c(word(trimws(str),-2),word(trimws(str),-1)))
 }
 getnextword <- function(strs,n){
   
@@ -16,7 +16,7 @@ getnextword <- function(strs,n){
 trigrams <- function(x,y,n=5){
   # get words from trigram
   outputwords1 <- tri_final[tri_final$w1==x & tri_final$w2==y,]
-  if(dim(outputwords1)[1]==0) # if no words in trigram go to bigram
+  if ((dim(outputwords1)[1]==0) | (is.na(x)==TRUE)) # if no words in trigram go to bigram
     return (bigrams(y,n))
   outputwords2<-outputwords1[order(-outputwords1$prob_tri),]
   if (nrow(outputwords2)>n)
